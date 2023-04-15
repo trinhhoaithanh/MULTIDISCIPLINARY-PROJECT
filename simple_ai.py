@@ -21,6 +21,10 @@ def image_detector():
     ret, image = camera.read()
 
     # read camera
+
+    # Resize the raw image into (224-height,224-width) pixels
+    image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
+
     res, frame = cv2.imencode('.jpg', image)
     data = base64.b64encode(frame)
 
@@ -30,9 +34,6 @@ def image_detector():
     else:
         print("Publish image: ")
         print(len(data))
-
-    # Resize the raw image into (224-height,224-width) pixels
-    image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
 
     # Show the image in a window
     # cv2.imshow("Webcam Image", image)
