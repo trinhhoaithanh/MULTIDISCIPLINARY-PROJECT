@@ -24,7 +24,7 @@ def image_detector():
     ret, image = camera.read()
 
     # Resize the raw image into (640-width,640-height) pixels
-    image = cv2.resize(image, (640, 640), interpolation=cv2.INTER_AREA)
+    image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
 
     res, frame = cv2.imencode('.jpg', image)
     data = base64.b64encode(frame)
@@ -41,12 +41,15 @@ def image_detector():
 
     # Normalize the image array
     image /= 255.0
+    
+    copyImage = image.copy()
 
     # Convert to a PyTorch tensor
-    image = torch.from_numpy(image.transpose(2, 0, 1)).unsqueeze(0).float()
+    image = torch.from_numpy(copyImage.transpose(2, 0, 1)).unsqueeze(0).float()
 
     # Predicts the model
     prediction = model(image.to(device))[0]
+    prediction = torch.unsqueeze(prediction, 0)
     prediction = non_max_suppression(prediction, conf_thres=0.5, iou_thres=0.5)[0]
 
     # Print prediction and confidence score

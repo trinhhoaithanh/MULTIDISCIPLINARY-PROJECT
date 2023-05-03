@@ -5,7 +5,7 @@ import random
 from simple_ai import *
 AIO_FEED_IDs = ["nutnhan1", "nutnhan2"]
 AIO_USERNAME = "clowz"
-AIO_KEY = "aio_LJrJ672j4wbALnsUIGMy2aZ843eJ"
+AIO_KEY = "aio_NaNu51YyhVLvj6zpiHf2y7fkGai0"
 
 
 def connected(client):
