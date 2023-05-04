@@ -7,6 +7,11 @@ AIO_FEED_IDs = ["nutnhan1", "nutnhan2"]
 AIO_USERNAME = "clowz"
 AIO_KEY = "aio_NaNu51YyhVLvj6zpiHf2y7fkGai0"
 
+camera = cv2.VideoCapture(0)
+camera_droid = cv2.VideoCapture('http://192.168.0.7:4747/video')
+# list of using camera
+cameraList = [camera, camera_droid]
+
 
 def connected(client):
     print("Ket noi thanh cong ...")
@@ -36,11 +41,13 @@ client.connect()
 client.loop_background()
 counter = 10
 sensor_type = 0
+cammera_type = 0
 counter_ai = 5
 ai_result = ""
 previous_result = ""
 while True:
     counter = counter-1
+    counter_ai = counter_ai - 1
     if counter <= 0:
         counter = 10
         print("Random data is publishing...")
@@ -59,14 +66,24 @@ while True:
             light = random.randint(100, 500)
             client.publish("cambien3", light)
             sensor_type = 0
-
-    counter_ai = counter_ai-1
     if counter_ai <= 0:
         counter_ai = 5
-        previous_result = ai_result
-        ai_result, image = image_detector()
-        if previous_result != ai_result:
-            print("AI Output: ", ai_result)
-            client.publish("ai", ai_result)
-        client.publish("image", image)
+        if cammera_type == 0:
+            previous_result = ai_result
+            ai_result, image = image_detector(cameraList[0])
+            if previous_result != ai_result:
+                print("AI Output: ", ai_result)
+                client.publish("ai", ai_result)
+            print("publish image 2!")
+            client.publish("image2", image)
+            cammera_type = 1
+        elif cammera_type == 1:
+            previous_result = ai_result
+            ai_result, image = image_detector(cameraList[1])
+            if previous_result != ai_result:
+                print("AI Output: ", ai_result)
+                client.publish("ai", ai_result)
+            print("publish image 1!")
+            client.publish("image", image)
+            cammera_type = 0
     time.sleep(1)

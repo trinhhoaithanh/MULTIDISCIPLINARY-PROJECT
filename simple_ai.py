@@ -16,15 +16,18 @@ model = torch.hub.load('ultralytics/yolov5', 'custom', path='best.pt')
 class_names = ["with_mask", "without_mask", "mask_weared_incorrect"]
 
 # CAMERA can be 0 or 1 based on default camera of your computer
-camera = cv2.VideoCapture(0)
+# camera = cv2.VideoCapture(0)
+# camera_droid = cv2.VideoCapture('http://192.168.0.4:4747/video')
 
 
-def image_detector():
-    # Grab the webcamera's image.
-    ret, image = camera.read()
+def image_detector(cam):
+    ret, image = cam.read()
 
-    # Resize the raw image into (640-width,640-height) pixels
+    # read camera
+    # Resize the raw image into (224-height,224-width) pixels
     image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
+    # Show the image in a window
+    # cv2.imshow("Webcam Image", image)
 
     res, frame = cv2.imencode('.jpg', image)
     data = base64.b64encode(frame)
