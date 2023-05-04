@@ -19,7 +19,8 @@ public class MQTTHelper {
     public final String[] arrayTopics = {"clowz/feeds/cambien1", "clowz/feeds/cambien2", "clowz/feeds/cambien3", "clowz/feeds/nutnhan1",
             "clowz/feeds/nutnhan2"};
     final String username = "clowz";
-    final String password = "aio_fhoS48rqUMwnz1aMrqCdbvUyGXXp";
+//    Input pass each time use
+    final String password = "";
     final String serverUri = "tcp://io.adafruit.com:1883";
 
     public MQTTHelper(Context context) {
