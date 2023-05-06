@@ -20,7 +20,7 @@ public class MQTTHelper {
             "clowz/feeds/nutnhan2"};
     final String username = "clowz";
 //    Input pass each time use
-    final String password = "";
+    final String password = "aio_vXgw961aFYTo48Tz2jPlzYlXZ7YB";
     final String serverUri = "tcp://io.adafruit.com:1883";
 
     public MQTTHelper(Context context) {

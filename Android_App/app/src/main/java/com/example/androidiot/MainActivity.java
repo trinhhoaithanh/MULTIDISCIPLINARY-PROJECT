@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         lightbtn = findViewById(R.id.lightbtn);
 //        fanbtn = findViewById(R.id.fanbtn);
 
-        pumpbtn.setOnCheckedChangeListener((compoundnutnhan, isOn) -> {
+        pumpbtn.setOnCheckedChangeListener((compoundButton, isOn) -> {
             if (isOn) {
                 sendDataMQTT("clowz/feeds/nutnhan2", "1");
             } else {
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        lightbtn.setOnCheckedChangeListener((nutnhanView, isChecked) -> {
+        lightbtn.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 sendDataMQTT("clowz/feeds/nutnhan1", "1");
             } else {
