@@ -18,9 +18,10 @@ class_names = ["with_mask", "without_mask", "mask_weared_incorrect"]
 # camera = cv2.VideoCapture(0)
 # camera_droid = cv2.VideoCapture('http://192.168.0.4:4747/video')
 
+camera = cv2.VideoCapture(0)
 
-def image_detector(cam):
-    ret, image = cam.read()
+def image_detector():
+    ret, image = camera.read()
 
     # read camera
     # Resize the raw image into (224-height,224-width) pixels

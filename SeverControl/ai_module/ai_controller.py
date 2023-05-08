@@ -1,7 +1,7 @@
 from keras.models import load_model
 from adafruit.ada_controller import AdaController
-# import cv2
-# import numpy as np
+import cv2
+import numpy as np
 from simple_ai import *
 
 np.set_printoptions(suppress=True)
@@ -10,7 +10,7 @@ class AiController:
     # static fields
     # model = load_model("./ai_module/keras_model.h5", compile=False)
     # class_names = open("./ai_module/labels.txt", "r").readlines()
-    camera = cv2.VideoCapture(0)
+    
     current_ai_data = ''
 
     @classmethod
@@ -23,7 +23,7 @@ class AiController:
         # index = np.argmax(prediction)
         # class_name = cls.class_names[index]
         # return class_name[2:]
-        return image_detector(camera)
+        return image_detector()
     @classmethod
     def update_ai(cls, client, count):
         if count == AdaController.sensor_frequency:

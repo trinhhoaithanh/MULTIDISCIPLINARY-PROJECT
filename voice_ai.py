@@ -41,6 +41,7 @@ def audio_callback(indata, frames, time, status):
     predicted_class = class_names[np.argmax(output_probabilities)]
 
     print("Predicted class:", predicted_class)
+    print("Probabilities: ", output_probabilities)
 
 # Start the microphone input
 with sd.InputStream(callback=audio_callback):
