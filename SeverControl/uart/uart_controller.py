@@ -64,8 +64,6 @@ class UartController:
         message = str(payload)
         if id == 'button1':
             cls.ser.write(('h' + message).encode())
-        if id == 'button2':
-            cls.ser.write(('t' + message).encode())
         if id == 'button3':
             cls.ser.write(('l' + message).encode())
 

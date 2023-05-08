@@ -3,7 +3,7 @@ import sys
 sys.path.append('./uart')
 from uart_controller import UartController
 
-AIO_FEED_IDs = ['button1', 'button2', 'button3', 'frequency', 'uart_frequency','pc_connection']
+AIO_FEED_IDs = ['button1', 'button3', 'frequency', 'uart_frequency','pc_connection']
 
 class AdaController:
 
@@ -73,7 +73,7 @@ class AdaController:
     def timeout(client):
         print("\nSystem Exit")
         client.publish('button1', '0')
-        client.publish('button2', '0')
+        
         client.publish('button3', '0')
         client.publish('sensor1', '0')
         client.publish('sensor2', '0')
