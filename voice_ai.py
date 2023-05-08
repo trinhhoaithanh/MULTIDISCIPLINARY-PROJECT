@@ -11,7 +11,7 @@ input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 # Define the class names
-class_names = ["Background Noise", "Tuan"]
+class_names = ["Background Noise", "Hung", "Thanh", "Thien", "Tuan"]
 
 # Define the callback function for the microphone input
 def audio_callback(indata, frames, time, status):
