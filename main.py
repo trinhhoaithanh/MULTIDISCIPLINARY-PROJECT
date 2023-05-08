@@ -10,7 +10,7 @@ AIO_KEY = "aio_NaNu51YyhVLvj6zpiHf2y7fkGai0"
 camera = cv2.VideoCapture(0)
 camera_droid = cv2.VideoCapture('http://192.168.0.7:4747/video')
 # list of using camera
-cameraList = [camera, camera_droid]
+cameraList = [camera,   ]
 
 
 def connected(client):

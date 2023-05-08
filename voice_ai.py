@@ -1,55 +1,48 @@
-from keras.models import load_model
+import tensorflow as tf
 import numpy as np
-import librosa
-import pyaudio
+import sounddevice as sd
 
-model = load_model("keras_model_audio.h5", compile=False)
+# Load the TensorFlow Lite model
+interpreter = tf.lite.Interpreter(model_path="soundclassifier_with_metadata.tflite")
+interpreter.allocate_tensors()
 
+# Get the input and output tensors
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
+
+# Define the class names
 class_names = ["Background Noise", "Tuan"]
 
+# Define the callback function for the microphone input
+def audio_callback(indata, frames, time, status):
+    # Resample the audio to match the model's sample rate
+    resampled_audio = np.interp(np.linspace(0, len(indata), len(indata)), np.arange(0, len(indata)), indata[:, 0]).astype(np.float32)
 
-CHUNK_SIZE = 1024
-SAMPLE_RATE = 44100
-RECORD_SECONDS = 1
+    # Normalize the audio data to be between -1 and 1
+    normalized_audio = (resampled_audio / np.max(np.abs(resampled_audio)))
 
-p = pyaudio.PyAudio()
+    # Pad or truncate the audio data to match the expected input shape of the model
+    padded_audio = np.pad(normalized_audio, (0, input_details[0]['shape'][1] - len(normalized_audio)), mode='constant')
 
-stream = p.open(format=pyaudio.paInt16,
-                channels=1,
-                rate=SAMPLE_RATE,
-                input=True,
-                frames_per_buffer=CHUNK_SIZE)
+    # Add a batch dimension to the audio data
+    input_data = np.expand_dims(padded_audio, axis=0)
 
-while True:
-    # Read the audio data from the stream
-    data = stream.read(CHUNK_SIZE)
+    # Set the input tensor
+    interpreter.set_tensor(input_details[0]['index'], input_data)
 
-    # Convert the binary data to a NumPy array
-    data = np.frombuffer(data, dtype=np.int16)
+    # Run the model
+    interpreter.invoke()
 
-    # Compute the spectrogram
-    spec = librosa.feature.melspectrogram(y=data, sr=SAMPLE_RATE, n_mels=128,
-                                           fmax=8000, hop_length=512)
+    # Get the output tensor and convert it to probabilities
+    output_data = interpreter.get_tensor(output_details[0]['index'])[0]
+    output_probabilities = tf.nn.softmax(output_data).numpy()
 
-    # Reshape the spectrogram to match the input shape of the model
-    spec = spec.reshape(1, spec.shape[0], spec.shape[1], 1)
+    # Get the class with the highest probability
+    predicted_class = class_names[np.argmax(output_probabilities)]
 
-    # Make a prediction using the model
-    prediction = model.predict(spec)
+    print("Predicted class:", predicted_class)
 
-    # Print the prediction
-    print(prediction)
-
-
-
-# # Make a prediction
-# prediction = model.predict(audio_data)
-# index = np.argmax(prediction)
-# class_name = class_names[index]
-# confidence_score = prediction[0][index]
-
-# # Print prediction and confidence score
-# print("Class:", class_name[2:], end=" ")
-# print("Confidence Score:", str(np.round(confidence_score * 100))[:-2], "%")
-
-# # Print the prediction
+# Start the microphone input
+with sd.InputStream(callback=audio_callback):
+    while True:
+        pass
