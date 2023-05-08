@@ -15,15 +15,18 @@ class AiController:
 
     @classmethod
     def ai_detector(cls):
-        # ret, image = cls.camera.read()
-        # image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
-        # image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
-        # image = (image / 127.5) - 1
-        # prediction = cls.model.predict(image)
-        # index = np.argmax(prediction)
-        # class_name = cls.class_names[index]
-        # return class_name[2:]
+        """Ai to detect mask
+
+        Returns:
+            ai_class: return ai class from image_detector
+            data: image from openCV
+        """
         return image_detector()
+    @classmethod
+    def voice_detector():
+        """Ai to clasify voice
+        """
+        pass
     @classmethod
     def update_ai(cls, client, count):
         if count == AdaController.sensor_frequency:
