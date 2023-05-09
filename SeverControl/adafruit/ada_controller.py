@@ -3,7 +3,7 @@ import sys
 sys.path.append('./uart')
 from uart_controller import UartController
 
-AIO_FEED_IDs = ['button1', 'button3', 'frequency', 'uart_frequency','pc_connection']
+AIO_FEED_IDs = ['button1', 'button3', 'frequency', 'uart_frequency']
 
 class AdaController:
 
@@ -15,7 +15,6 @@ class AdaController:
     @staticmethod
     def connect(client):
         print("*** Connected")
-        client.publish("pc_connection",1)
         for feed in AIO_FEED_IDs:
             client.subscribe(feed)
             client.publish(feed + '/get')
@@ -79,5 +78,4 @@ class AdaController:
         client.publish('sensor2', '0')
         client.publish('sensor3', '0')
                 
-        client.publish("pc_connection",'0')
         sys.exit(1)
