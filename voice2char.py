@@ -2,7 +2,8 @@ import tensorflow as tf
 import numpy as np
 import sounddevice as sd
 import speech_recognition as sr
-from voice_ai import *
+from voice2action import *
+# from voice_ai import *    
 
 # Load the TensorFlow Lite model
 interpreter = tf.lite.Interpreter(model_path="soundclassifier_with_metadata.tflite")
@@ -55,6 +56,7 @@ def audio_callback(indata, frames, time, status):
         try:
             text = r.recognize_google(audio)
             print("You said:", text)
+            actionOnPermission(text, predicted_class)
         except sr.UnknownValueError:
             print("Sorry, I could not understand what you said.")
         except sr.RequestError as e:

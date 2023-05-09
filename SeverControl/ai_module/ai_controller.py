@@ -30,9 +30,10 @@ class AiController:
     @classmethod
     def update_ai(cls, client, count):
         if count == AdaController.sensor_frequency:
-            ai, data = cls.ai_detector()
-            if ai != cls.current_ai_data:
-                client.publish("ai", ai)
-                print("Face data: ", ai)
+            numMask, numNoMask, data = cls.ai_detector()
+            aiImage = str(numMask) + ' with mask\n' + str(numNoMask) + ' wthout mask'
+            if aiImage != cls.current_ai_data:
+                client.publish("ai", aiImage)
+                print("Face data: ", aiImage)
             client.publish("image", data)
             cls.current_ai_data = data
