@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgblueblue"
-    tools:context=".SwitchTabActivity">
+    tools:context=".SwitchTabActivity"
+    android:background="@color/gray">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,19 +15,23 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp">
+
+            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/bgtop" />
 
             <TextView
                 android:id="@+id/txtdashboard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Dashboard"
-                android:textColor="#FFFFFF"
-                android:textSize="40sp"
-                android:textStyle="bold" />
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="MY DASHBOARD"
+                android:textColor="@color/white"
+                android:textSize="35dp" />
 
         </RelativeLayout>
 
@@ -38,7 +42,7 @@
             android:textSize="25sp"
             android:textStyle="bold"
             android:layout_marginStart="16dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             />
 
         <TextView
@@ -47,7 +51,7 @@
             android:layout_height="100dp"
             android:layout_margin="20dp"
             android:layout_weight="20"
-            android:background="#EC6EAD"
+            android:background="#e76f51"
             android:gravity="center"
             android:text=""
             android:textColor="#ffff"
@@ -61,18 +65,19 @@
             android:textStyle="bold"
             android:layout_marginStart="16dp"
 
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"/>
+
         <TextView
             android:id="@+id/humi_screen"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:layout_margin="20dp"
             android:layout_weight="20"
-            android:text=""
-            android:textSize="55dp"
+            android:background="#d4a373"
             android:gravity="center"
+            android:text=""
             android:textColor="#ffff"
-            android:background="#237A57"
-            android:layout_margin="20dp"/>
+            android:textSize="55dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,19 +85,20 @@
             android:textSize="25sp"
             android:textStyle="bold"
             android:layout_marginStart="16dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             />
+
         <TextView
             android:id="@+id/light_screen"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:layout_margin="20dp"
             android:layout_weight="20"
-            android:text=""
-            android:textSize="55dp"
+            android:background="#ccd5ae"
             android:gravity="center"
+            android:text=""
             android:textColor="#ffff"
-            android:background="#43C6AC"
-            android:layout_margin="20dp"/>
+            android:textSize="55dp" />
 
 
     </LinearLayout>

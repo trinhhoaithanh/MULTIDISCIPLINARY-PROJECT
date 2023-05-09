@@ -143,7 +143,7 @@
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="switchTab"
+                android:onClick="switchControl"
                 android:text="Control" />
         </LinearLayout>
     </LinearLayout>
@@ -174,7 +174,7 @@
                     android:id="@+id/button3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="switchTab"
+                    android:onClick="switchCamera"
                     android:text="Camera" />
             </LinearLayout>
             <LinearLayout

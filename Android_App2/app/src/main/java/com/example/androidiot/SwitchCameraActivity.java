@@ -21,23 +21,16 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-public class SwitchTabActivity extends AppCompatActivity {
+public class SwitchCameraActivity extends AppCompatActivity {
     MQTTHelper mqttHelper;
-    TextView temp_screen, humi_screen, light_screen;
-
+    TextView camera;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_switch_tab);
-        temp_screen = findViewById(R.id.temp_screen);
-        humi_screen = findViewById(R.id.humi_screen);
-        light_screen = findViewById(R.id.light_screen);
-
+        setContentView(R.layout.activity_switch_camera);
+        camera = findViewById(R.id.camera);
         startMQTT();
     }
-
-
-
     public void startMQTT() {
         mqttHelper = new MQTTHelper(this);
 
@@ -55,12 +48,8 @@ public class SwitchTabActivity extends AppCompatActivity {
             @Override
             public void messageArrived(String topic, MqttMessage message) throws Exception {
                 String value = message.toString();
-                if (topic.contains("sensor2")) {
-                    temp_screen.setText(value + "°C");
-                } else if (topic.contains("sensor1")) {
-                    humi_screen.setText(value + "%");
-                } else if (topic.contains("sensor3")) {
-                    light_screen.setText(value + " Lux");
+                if (topic.contains("ai")) {
+                    camera.setText(value);
                 }
 
             }
@@ -72,4 +61,3 @@ public class SwitchTabActivity extends AppCompatActivity {
         });
     }
 }
-

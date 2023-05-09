@@ -22,10 +22,6 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity {
-
-
-//    ToggleButton pumpbtn, lightbtn, fanbtn;
-//
     ImageView bgapp,cloverimg;
     LinearLayout splashtext,hometext,menus;
     Animation frombottom;
@@ -46,52 +42,19 @@ public class MainActivity extends AppCompatActivity {
         splashtext.animate().translationY(140).alpha(0).setDuration(800).setStartDelay(800);
         hometext.startAnimation(frombottom);
         menus.startAnimation(frombottom);
-
-
-
-
-
-
-//        temp_screen = findViewById(R.id.temp_screen);
-//        humi_screen = findViewById(R.id.humi_screen);
-//        light_screen = findViewById(R.id.light_screen);
-//        pumpbtn = findViewById(R.id.pumpbtn);
-//        lightbtn = findViewById(R.id.lightbtn);
-////        fanbtn = findViewById(R.id.fanbtn);
-//
-//        pumpbtn.setOnCheckedChangeListener((compoundButton, isOn) -> {
-//            if (isOn) {
-//                sendDataMQTT("clowz/feeds/nutnhan2", "1");
-//            } else {
-//                sendDataMQTT("clowz/feeds/nutnhan2", "0");
-//            }
-//        });
-//
-//        lightbtn.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//            if (isChecked) {
-//                sendDataMQTT("clowz/feeds/nutnhan1", "1");
-//            } else {
-//                sendDataMQTT("clowz/feeds/nutnhan1", "0");
-//            }
-//        });
-//
-////        fanbtn.setOnCheckedChangeListener((nutnhanView, isChecked) -> {
-////            if (isChecked) {
-////                sendDataMQTT("clowz/feeds/nutnhan2", "1");
-////            } else {
-////                sendDataMQTT("clowz/feeds/nutnhan2", "0");
-////            }
-////        });
-//
-//
-//        startMQTT();
-//    }
-//
-
     }
     public void switchTab(View v){
-        Intent i  = new Intent(this, SwitchTabActivity.class);
-        startActivity(i);
+        Intent  display  = new Intent(this, SwitchTabActivity.class);
+        startActivity(display);
+
+    }
+    public void switchControl(View v){
+        Intent control  = new Intent(this, SwitchControlActivity.class);
+        startActivity(control);
+    }
+    public void switchCamera(View v){
+        Intent camera  = new Intent(this, SwitchCameraActivity.class);
+        startActivity(camera);
     }
 
 }

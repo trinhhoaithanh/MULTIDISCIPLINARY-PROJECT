@@ -18,6 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidIoT">
         <activity
+            android:name=".SwitchCameraActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SwitchControlActivity"
+            android:exported="true" />
+        <activity
             android:name=".SwitchTabActivity"
             android:exported="true" />
         <activity
