@@ -25,7 +25,7 @@ public class SwitchControlActivity extends AppCompatActivity {
         setContentView(R.layout.activity_switch_control);
         pumpbtn = findViewById(R.id.pumpbtn);
         lightbtn = findViewById(R.id.lightbtn);
-        fanbtn = findViewById(R.id.fanbtn);
+//        fanbtn = findViewById(R.id.fanbtn);
 
 //        fanbtn.setOnCheckedChangeListener((nutnhanView, isChecked) -> {
 //            if (isChecked) {
@@ -42,13 +42,13 @@ public class SwitchControlActivity extends AppCompatActivity {
             }
         });
 
-//        lightbtn.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//            if (isChecked) {
-//                sendDataMQTT("hungneet/feeds/button3", "1");
-//            } else {
-//                sendDataMQTT("hungneet/feeds/button3", "0");
-//            }
-//        });
+        lightbtn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                sendDataMQTT("hungneet/feeds/button3", "1");
+            } else {
+                sendDataMQTT("hungneet/feeds/button3", "0");
+            }
+        });
 
         startMQTT();
     }
@@ -87,9 +87,9 @@ public class SwitchControlActivity extends AppCompatActivity {
                 if (topic.contains("button1")) {
                     pumpbtn.setChecked(value.equals("1"));
                 }
-//                else if (topic.contains("button3")) {
-//                    lightbtn.setChecked(value.equals("1"));
-//                }
+                else if (topic.contains("button3")) {
+                    lightbtn.setChecked(value.equals("1"));
+                }
 //                else if (topic.contains("nutnhan3")) {
 //                    lightbtn.setChecked(value.equals("1"));
 //                }
