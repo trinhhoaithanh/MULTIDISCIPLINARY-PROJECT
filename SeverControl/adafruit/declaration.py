@@ -3,7 +3,7 @@ from Adafruit_IO import MQTTClient
 from adafruit.ada_controller import *
 
 AIO_USERNAME = 'hungneet'
-AIO_KEY = 'aio_dlcY51MWgaVDz7VctVtAnt4wtbdA' #key is private 
+AIO_KEY = 'aio_gdDv73pGHf7FiRxcmsivmMYQFU2J' #key is private 
 
 client = MQTTClient(AIO_USERNAME , AIO_KEY)
 print(client)

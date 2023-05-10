@@ -1,4 +1,4 @@
-Ohstem code for devices : https://app.ohstem.vn/#!/share/yolobit/2PXwQaXysvoohxUI80LqeOccenl
+Ohstem code for devices : https://app.ohstem.vn/#!/share/yolobit/2Pao5EnQjb80SNYG1DCuE6AV7UV
 Device Gate
 - Pump: P14, usb output1
 - Light: P10
