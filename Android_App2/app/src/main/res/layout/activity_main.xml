@@ -198,8 +198,8 @@
                     android:id="@+id/button4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="switchTab"
-                    android:text="Chatbox" />
+                    android:onClick="switchVoice"
+                    android:text="VOICE" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

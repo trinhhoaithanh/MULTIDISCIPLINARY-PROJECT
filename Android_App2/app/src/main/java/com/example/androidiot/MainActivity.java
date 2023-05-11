@@ -56,5 +56,9 @@ public class MainActivity extends AppCompatActivity {
         Intent camera  = new Intent(this, SwitchCameraActivity.class);
         startActivity(camera);
     }
+    public void switchVoice(View v){
+        Intent voice  = new Intent(this, SwitchVoiceActivity.class);
+        startActivity(voice);
+    }
 
 }

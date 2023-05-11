@@ -1,23 +1,22 @@
 package com.example.androidiot;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.widget.TextView;
-//import android.widget.TogglenButton;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
-public class SwitchCameraActivity extends AppCompatActivity {
+public class SwitchVoiceActivity extends AppCompatActivity {
     MQTTHelper mqttHelper;
-    TextView camera;
+    TextView voice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_switch_camera);
-        camera = findViewById(R.id.camera);
+        setContentView(R.layout.activity_switch_voice);
+        voice = findViewById(R.id.voice);
         startMQTT();
     }
     public void startMQTT() {
@@ -37,8 +36,8 @@ public class SwitchCameraActivity extends AppCompatActivity {
             @Override
             public void messageArrived(String topic, MqttMessage message) throws Exception {
                 String value = message.toString();
-                if (topic.contains("ai")) {
-                    camera.setText(value);
+                if (topic.contains("voice")) {
+                    voice.setText(value);
                 }
 
             }

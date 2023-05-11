@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SwitchCameraActivity"
-    android:background="@color/gray">
+    tools:context=".SwitchVoiceActivity"
+    android:background="@color/gray"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,7 +29,7 @@
                 android:layout_marginLeft="140dp"
                 android:layout_marginTop="100dp"
                 android:gravity="center"
-                android:text="CAMERA"
+                android:text="VOICE"
                 android:textColor="@color/white"
                 android:textSize="35dp" />
 
@@ -50,21 +51,22 @@
             app:cardCornerRadius="16dp"
             app:cardElevation="12dp"
             tools:ignore="MissingDefaultResource"
-            app:cardBackgroundColor="@color/purple_200"
+            app:cardBackgroundColor="@color/purple_700"
             >
 
             <TextView
-                android:id="@+id/camera"
+                android:id="@+id/voice"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:layout_weight="20"
-                android:gravity="center"
+                android:layout_gravity="center"
                 android:orientation="horizontal"
                 android:text=""
                 android:textColor="#ffff"
-                android:textSize="55dp">
+                android:textSize="55dp"
+                android:gravity="center"
+                >
 
 
             </TextView>
