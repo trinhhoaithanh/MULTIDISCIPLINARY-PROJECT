@@ -21,13 +21,14 @@ class_names = ["with_mask", "without_mask", "mask_weared_incorrect"]
 camera = cv2.VideoCapture(0)
 
 def image_detector():
+    # read camera
     ret, image = camera.read()
 
-    # read camera
     # Resize the raw image into (224-height,224-width) pixels
     image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
+    
     # Show the image in a window
-    # cv2.imshow("Webcam Image", image)
+    cv2.imshow("Webcam Image", image)
 
     res, frame = cv2.imencode('.jpg', image)
     data = base64.b64encode(frame)
@@ -65,4 +66,4 @@ def image_detector():
         return class_name, data
     else:
         print("No object detected")
-        return "No object detected", None
+        return "No object detected", data

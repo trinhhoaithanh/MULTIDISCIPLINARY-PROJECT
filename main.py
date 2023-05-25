@@ -5,10 +5,10 @@ import random
 from simple_ai import *
 AIO_FEED_IDs = ["nutnhan1", "nutnhan2"]
 AIO_USERNAME = "clowz"
-AIO_KEY = "aio_NaNu51YyhVLvj6zpiHf2y7fkGai0"
+AIO_KEY = "aio_GfBy85NpAYNTCNbiWnoSGUcvXJ4m"
 
 camera = cv2.VideoCapture(0)
-camera_droid = cv2.VideoCapture('http://192.168.0.7:4747/video')
+# camera_droid = cv2.VideoCapture('http://192.168.0.7:4747/video')
 # list of using camera
 cameraList = [camera,   ]
 
@@ -68,22 +68,11 @@ while True:
             sensor_type = 0
     if counter_ai <= 0:
         counter_ai = 5
-        if cammera_type == 0:
-            previous_result = ai_result
-            ai_result, image = image_detector(cameraList[0])
-            if previous_result != ai_result:
-                print("AI Output: ", ai_result)
-                client.publish("ai", ai_result)
-            print("publish image 2!")
-            client.publish("image2", image)
-            cammera_type = 1
-        elif cammera_type == 1:
-            previous_result = ai_result
-            ai_result, image = image_detector(cameraList[1])
-            if previous_result != ai_result:
-                print("AI Output: ", ai_result)
-                client.publish("ai", ai_result)
-            print("publish image 1!")
-            client.publish("image", image)
-            cammera_type = 0
+        previous_result = ai_result
+        ai_result, image = image_detector()
+        if previous_result != ai_result:
+            print("AI Output: ", ai_result)
+            client.publish("ai", ai_result)
+        print("publish image 2!")
+        client.publish("image2", image)
     time.sleep(1)
