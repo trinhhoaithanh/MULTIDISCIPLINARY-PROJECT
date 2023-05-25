@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         OkHttpClient okHttpClient = new OkHttpClient();
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://2bfd04ec3146.ngrok.io/webhooks/rest/").client(okHttpClient).addConverterFactory(GsonConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://66ce-2001-ee0-d705-72e0-c0fb-ebed-d215-246b.ngrok.io/webhooks/rest/").client(okHttpClient).addConverterFactory(GsonConverterFactory.create()).build();
         MessageSender messageSender = retrofit.create(MessageSender.class);
         Call<ArrayList<BotResponse>> response = messageSender.messageSender(userMessage);
         response.enqueue(new Callback<ArrayList<BotResponse>>() {
